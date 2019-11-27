@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -58,7 +59,7 @@ public class DetailActivity extends AppCompatActivity {
                 }else if (TextUtils.isEmpty(kelas)) {
                     edtKelasSiswa.setError("Tidak Boleh Kosong");
                 }else {
-                    updateSiswa();
+                    updateSiswa(terimaid, terimanama, terimakelas);
                 }
             }
         });
@@ -77,11 +78,21 @@ public class DetailActivity extends AppCompatActivity {
         ApiClient.service.actionUpdate(id, nama, kelas).enqueue(new Callback<ResponseUpdate>() {
             @Override
             public void onResponse(Call<ResponseUpdate> call, Response<ResponseUpdate> response) {
+                if (response.isSuccessful()) {
+                    String message = response.body().getMessage();
+                    String status = response.body().getStatus();
 
+                    if (status.equalsIgnoreCase("1")) {
+                        Toast.makeText(DetailActivity.this, message, Toast.LENGTH_SHORT).show();
+                    }else if (status.equalsIgnoreCase("0")) {
+                        Toast.makeText(DetailActivity.this, message, Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
 
             @Override
             public void onFailure(Call<ResponseUpdate> call, Throwable t) {
+                Toast.makeText(DetailActivity.this, "Gagal onFailure", Toast.LENGTH_SHORT).show();
 
             }
         });

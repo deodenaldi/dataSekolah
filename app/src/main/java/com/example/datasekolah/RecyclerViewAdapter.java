@@ -40,6 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         String namaSiswa = dataReadSiswa.get(position).getNamaSiswa();
         String kelasSiswa = dataReadSiswa.get(position).getKelas();
+        String idSiswa = dataReadSiswa.get(position).getIdSiswa();
 
         holder.txtNamaSiswa.setText(namaSiswa);
         holder.txtKelasSiswa.setText(kelasSiswa);
@@ -50,6 +51,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Intent intent =  new Intent(context, DetailActivity.class);
                 intent.putExtra(DetailActivity.KEY_NAMA_SISWA, namaSiswa);
                 intent.putExtra(DetailActivity.KEY_KELAS_SISWA, kelasSiswa);
+                intent.putExtra(DetailActivity.KEY_ID, idSiswa);
+
+
                 context.startActivity(intent);
 
             }

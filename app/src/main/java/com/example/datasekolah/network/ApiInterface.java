@@ -1,5 +1,6 @@
 package com.example.datasekolah.network;
 
+
 import com.example.datasekolah.model.delete.ResponseDelete;
 import com.example.datasekolah.model.login.ResponseLogin;
 import com.example.datasekolah.model.readSiswa.ResponseReadSiswa;
@@ -16,13 +17,13 @@ import retrofit2.http.POST;
 
 public interface ApiInterface {
 
-//    TODO Login
+    //    TODO Login
     @FormUrlEncoded
     @POST("login_user.php")
     Call<ResponseLogin> responseLogin(@Field("vsusername") String vsusername,
                                       @Field("vspassword") String vspassword);
 
-//    TODO Register
+    //    TODO Register
     @FormUrlEncoded
     @POST("register_user.php")
     Call<ResponseRegister> responseRegister (@Field("nama_user") String nama_user,
