@@ -1,6 +1,7 @@
 package com.example.datasekolah.activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -81,7 +82,18 @@ public class DetailActivity extends AppCompatActivity {
                         ApiClient.service.actionDelete(terimaid).enqueue(new Callback<ResponseDelete>() {
                             @Override
                             public void onResponse(Call<ResponseDelete> call, Response<ResponseDelete> response) {
+                                if (response.isSuccessful()) {
+                                    String message = response.body().getMessagge();
+                                    int status = response.body().getStatus();
 
+                                    if (status == 1) {
+                                        Toast.makeText(DetailActivity.this, message, Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(DetailActivity.this, MainActivity.class));
+                                        finish();
+                                    }else if (status == 0) {
+                                        Toast.makeText(DetailActivity.this, message, Toast.LENGTH_SHORT).show();
+                                    }
+                                }
                             }
 
                             @Override

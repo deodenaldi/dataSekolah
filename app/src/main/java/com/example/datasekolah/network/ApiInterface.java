@@ -10,10 +10,12 @@ import com.example.datasekolah.model.update.ResponseUpdate;
 import java.util.ArrayList;
 
 import retrofit2.Call;
+import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiInterface {
 
@@ -39,8 +41,8 @@ public interface ApiInterface {
                                        @Field("kelas") String kelas,
                                        @Field("id_siswa") String id_siswa);
 
-    @FormUrlEncoded
-    @POST("delete_siswa.php")
-    Call<ResponseDelete> actionDelete (@Field("id_siswa") String id);
+
+    @DELETE("delete_siswa.php")
+    Call<ResponseDelete> actionDelete (@Query("id_siswa") String id);
 
 }
