@@ -1,9 +1,10 @@
-package com.example.datasekolah.model.update;
+package com.example.datasekolah.model.add;
 
 
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseUpdate{
+
+public class ResponseAdd{
 
 	@SerializedName("nama_siswa")
 	private String namaSiswa;
@@ -52,7 +53,7 @@ public class ResponseUpdate{
 	@Override
  	public String toString(){
 		return 
-			"ResponseUpdate{" + 
+			"ResponseAdd{" + 
 			"nama_siswa = '" + namaSiswa + '\'' + 
 			",kelas = '" + kelas + '\'' + 
 			",message = '" + message + '\'' + 

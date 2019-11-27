@@ -1,6 +1,7 @@
 package com.example.datasekolah.network;
 
 
+import com.example.datasekolah.model.add.ResponseAdd;
 import com.example.datasekolah.model.delete.ResponseDelete;
 import com.example.datasekolah.model.login.ResponseLogin;
 import com.example.datasekolah.model.readSiswa.ResponseReadSiswa;
@@ -15,6 +16,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
@@ -35,14 +37,18 @@ public interface ApiInterface {
     @GET("read_siswa.php")
     Call<ArrayList<ResponseReadSiswa>> actionReadSiswa();
 
-    @FormUrlEncoded
-    @POST("update_siswa.php")
-    Call<ResponseUpdate> actionUpdate (@Field("nama_siswa") String nama_siswa,
-                                       @Field("kelas") String kelas,
-                                       @Field("id_siswa") String id_siswa);
+
+    @PUT("update_siswa.php")
+    Call<ResponseUpdate> actionUpdate (@Query("nama_siswa") String nama_siswa,
+                                       @Query("kelas") String kelas,
+                                       @Query("id_siswa") String id_siswa);
 
 
     @DELETE("delete_siswa.php")
     Call<ResponseDelete> actionDelete (@Query("id_siswa") String id);
 
+    @FormUrlEncoded
+    @POST("create_siswa.php")
+    Call<ResponseAdd> actionAdd (@Field("nama_siswa") String nama_siswa,
+                                 @Field("kelas") String kelas);
 }
