@@ -6,7 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="40"
     tools:context=".activity.LoginActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:layout_marginTop="20dp"
+        android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/edtUsername"
@@ -20,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
+        android:inputType="textPassword"
         android:hint="Masukan Password"/>
 
     <Button
