@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
                         rcView.setHasFixedSize(true);
                         rcView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-                        rcView.setAdapter(new RecyclerViewAdapter());
+                        rcView.setAdapter(new RecyclerViewAdapter(data));
                     }
                 }
             }
