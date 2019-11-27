@@ -1,6 +1,7 @@
 package com.example.datasekolah;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.datasekolah.activity.DetailActivity;
+import com.example.datasekolah.activity.MainActivity;
 import com.example.datasekolah.model.readSiswa.ResponseReadSiswa;
 
 import java.util.ArrayList;
@@ -17,9 +20,11 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     List<ResponseReadSiswa> dataReadSiswa;
+    Context context;
 
-    public RecyclerViewAdapter( ArrayList<ResponseReadSiswa> dataReadSiswa){
+    public RecyclerViewAdapter(Context context, ArrayList<ResponseReadSiswa> dataReadSiswa){
 
+        this.context = context;
         this.dataReadSiswa = dataReadSiswa;
     }
 
@@ -38,6 +43,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.txtNamaSiswa.setText(namaSiswa);
         holder.txtKelasSiswa.setText(kelasSiswa);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(context, DetailActivity.class);
+                intent.putExtra(DetailActivity.KEY_NAMA_SISWA, namaSiswa);
+                intent.putExtra(DetailActivity.KEY_KELAS_SISWA, kelasSiswa);
+                context.startActivity(intent);
+
+            }
+        });
 
     }
 
