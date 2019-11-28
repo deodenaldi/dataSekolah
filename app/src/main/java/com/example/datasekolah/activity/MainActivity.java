@@ -43,6 +43,32 @@ public class MainActivity extends AppCompatActivity {
 
         getReadSiswa();
 
+        // Getting SwipeContainerLayout
+        swipeLayout = findViewById(R.id.swipe_container);
+        // Adding Listener
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getReadSiswa();
+                Toast.makeText(getApplicationContext(), "Works!", Toast.LENGTH_LONG).show();
+                // To keep animation for 4 seconds
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+                        // Stop animation (This will be after 3 seconds)
+                        swipeLayout.setRefreshing(false);
+                    }
+                }, 4000); // Delay in millis
+            }
+        });
+
+        // Scheme colors for animation
+        swipeLayout.setColorSchemeColors(
+                getResources().getColor(android.R.color.holo_blue_bright),
+                getResources().getColor(android.R.color.holo_green_light),
+                getResources().getColor(android.R.color.holo_orange_light),
+                getResources().getColor(android.R.color.holo_red_light)
+        );
+
     }
 
     private void getReadSiswa() {
