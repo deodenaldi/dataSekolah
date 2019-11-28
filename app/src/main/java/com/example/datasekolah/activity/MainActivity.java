@@ -29,9 +29,8 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    SwipeRefreshLayout swipeLayout;
-
     ArrayList<ResponseReadSiswa> data = null;
+    SwipeRefreshLayout swipeLayout;
 
     @BindView(R.id.rcView)
     RecyclerView rcView;
@@ -40,42 +39,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Getting SwipeContainerLayout
-        swipeLayout = findViewById(R.id.swipe_container);
-
         ButterKnife.bind(this);
 
         getReadSiswa();
 
-        // Adding Listener
-        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getReadSiswa();
-                Toast.makeText(getApplicationContext(), "Works!", Toast.LENGTH_LONG).show();
-                // To keep animation for 4 seconds
-                new Handler().postDelayed(new Runnable() {
-                    @Override public void run() {
-                        // Stop animation (This will be after 3 seconds)
-                        swipeLayout.setRefreshing(false);
-                    }
-                }, 1000); // Delay in millis
-            }
-        });
-
-        // Scheme colors for animation
-        swipeLayout.setColorSchemeColors(
-                getResources().getColor(android.R.color.holo_blue_bright),
-                getResources().getColor(android.R.color.holo_green_light),
-                getResources().getColor(android.R.color.holo_orange_light),
-                getResources().getColor(android.R.color.holo_red_light)
-        );
     }
-
-
-
-
 
     private void getReadSiswa() {
         ApiClient.service.actionReadSiswa().enqueue(new Callback<ArrayList<ResponseReadSiswa>>() {

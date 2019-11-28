@@ -63,7 +63,7 @@ public class DetailActivity extends AppCompatActivity {
                 }else if (TextUtils.isEmpty(kelas)) {
                     edtKelasSiswa.setError("Tidak Boleh Kosong");
                 }else {
-                    updateSiswa(terimaid, terimanama, terimakelas);
+                    updateSiswa(terimaid, nama, kelas);
                 }
             }
         });
