@@ -132,6 +132,8 @@ public class DetailActivity extends AppCompatActivity {
 
                     if (status.equalsIgnoreCase("1")) {
                         Toast.makeText(DetailActivity.this, message, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(DetailActivity.this, MainActivity.class));
+                        finish();
                     }else if (status.equalsIgnoreCase("0")) {
                         Toast.makeText(DetailActivity.this, message, Toast.LENGTH_SHORT).show();
                     }

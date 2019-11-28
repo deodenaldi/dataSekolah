@@ -39,9 +39,9 @@ public interface ApiInterface {
 
 
     @PUT("update_siswa.php")
-    Call<ResponseUpdate> actionUpdate (@Query("nama_siswa") String nama_siswa,
-                                       @Query("kelas") String kelas,
-                                       @Query("id_siswa") String id_siswa);
+    Call<ResponseUpdate> actionUpdate (@Query("id_kelas") String id_siswa,
+                                       @Query("nama_siswa") String nama_siswa,
+                                       @Query("kelas") String kelas);
 
 
     @DELETE("delete_siswa.php")
